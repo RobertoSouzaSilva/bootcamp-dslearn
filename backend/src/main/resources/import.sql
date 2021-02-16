@@ -18,3 +18,7 @@ INSERT INTO tb_course(name, img_Uri, img_Gray_Uri) VALUES ('Bootcamp HTML', 'htt
 
 INSERT INTO tb_offer(edition, start_Moment, end_Moment, course_id) VALUES('1.0',TIMESTAMP WITH TIME ZONE '2021-01-01T03:00:00Z',TIMESTAMP WITH TIME ZONE '2022-01-01T03:00:00Z',1);
 INSERT INTO tb_offer(edition, start_Moment, end_Moment, course_id) VALUES('2.0',TIMESTAMP WITH TIME ZONE '2021-11-01T03:00:00Z',TIMESTAMP WITH TIME ZONE '2022-11-01T03:00:00Z',1);
+
+INSERT INTO tb_resource(title, description, position, img_Uri, type, offer_id) VALUES ('Trilha HTML', 'Trilha principal do curso', 1,  'https://cdn.pixabay.com/photo/2018/02/24/05/51/heart-attack-3177360_1280.jpg', 1, 1);
+INSERT INTO tb_resource(title, description, position, img_Uri, type, offer_id) VALUES ('Fórum', 'Tire suas dúvidas', 2,  'https://cdn.pixabay.com/photo/2018/02/24/05/51/heart-attack-3177360_1280.jpg', 2, 1);
+INSERT INTO tb_resource(title, description, position, img_Uri, type, offer_id) VALUES ('Lives', 'Lives bônus', 3,  'https://cdn.pixabay.com/photo/2018/02/24/05/51/heart-attack-3177360_1280.jpg', 0, 1);
