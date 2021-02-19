@@ -1,5 +1,7 @@
 package com.robertosouza.dslearnbds.services;
 
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +9,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.robertosouza.dslearnbds.dto.UserDTO;
 import com.robertosouza.dslearnbds.entities.User;
 import com.robertosouza.dslearnbds.repositories.UserRepository;
+import com.robertosouza.dslearnbds.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -18,6 +23,15 @@ public class UserService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	
+	@Transactional(readOnly = true)
+	public UserDTO findById(Long id) {
+		Optional<User> userOptional = userRepository.findById(id);
+		User userEntity = userOptional.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado"));
+		return new UserDTO(userEntity);
+		
+	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
