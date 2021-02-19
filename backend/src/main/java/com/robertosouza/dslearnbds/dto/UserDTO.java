@@ -12,11 +12,9 @@ public class UserDTO implements Serializable {
 	private String email;
 
 	public UserDTO() {
-		super();
 	}
 
 	public UserDTO(Long id, String name, String email) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
